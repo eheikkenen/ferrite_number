@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FNN-1999</title>
+    <script src="../build/fnn1999.js"></script>
+</head>
+<body>
+
+<h1>FNN-1999</h1>
+<p>Based on: Improved Ferrite Number Prediction in Stainless Steel Arc Welds Using Artificial Neural Networks Part 1:
+    Neural Network Development; J.M. Vitek, Y.S. Iskander AND E.M. Oblow; 2000</p>
+<p>Note: This is a work in progress.</p>
+
+<div>C<input type="number" id="c" value="0.01"></div>
+<div>Cr<input type="number" id="cr" value="18.5"></div>
+<div>Ni<input type="number" id="ni" value="12.0"></div>
+<div>Mo<input type="number" id="mo" value="2.6"></div>
+<div>N<input type="number" id="n" value="0.1"></div>
+<div>Mn<input type="number" id="mn" value="0.8"></div>
+<div>Fe<input type="number" id="fe" value="65.2"></div>
+<div>Si<input type="number" id="si" value="0.8"></div>
+<div>Cu<input type="number" id="cu" value="0"></div>
+<div>Ti<input type="number" id="ti" value="0"></div>
+<div>Nb<input type="number" id="nb" value="0"></div>
+<div>V<input type="number" id="v" value="0"></div>
+<div>Co<input type="number" id="co" value="0"></div>
+
+<button id="test"
+        onclick="fnn1999()">get FN
+</button>
+<div><span id="test_output"></span></div>
+
+</body>
+</html>
