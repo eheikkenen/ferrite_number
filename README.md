@@ -6,11 +6,15 @@ This project is a web-based calculator for predicting the Ferrite Number (FN) in
 
 This project is based on the paper: "Improved Ferrite Number Prediction in Stainless Steel Arc Welds Using Artificial Neural Networks Part 1: Neural Network Development" by J.M. Vitek, Y.S. Iskander, and E.M. Oblow (2000).
 
+## What is Ferrite Number (FN) and why it matters
+**Ferrite Number (FN)** is a measure of ferrite content in austenitic and duplex stainless steel weld metal. FN correlates with crack susceptibility, solidification mode (primary austenite vs. ferrite), and several weld properties, so manufacturers often specify minimum/maximum FN in welding procedures and filler metal selections. While FN can roughly correlate to ferrite percentages at low ferrite numbers, there is not an absolute match to the actual ferrite percentages.
+
+
 ## Usage
 
 1.  Open `index.html` in your web browser.
 2.  Enter the chemical composition of the weld metal in the input fields.
-3.  Click the "get FN" button to calculate the Ferrite Number.
+3.  Click the "Calculate FN" button to calculate the Ferrite Number.
 
 ## Development
 
