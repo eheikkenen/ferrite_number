@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "amd",
     "target": "es5",
     "sourceMap": true,
-    "outDir": "build",
+    "outFile": "build/main.js"
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "src/scripts/**/*"
+    "src/scripts/modelData.ts",
+    "src/scripts/fnn1999.ts",
+    "src/scripts/ui.ts",
+    "src/scripts/main.ts"
   ]
 }

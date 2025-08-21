@@ -1,0 +1,24 @@
+{
+  "name": "ferrite_number",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eheikkenen/ferrite_number.git"
+  },
+  "keywords": [],
+  "author": "Eric Heikkenen",
+  "bugs": {
+    "url": "https://github.com/eheikkenen/ferrite_number/issues"
+  },
+  "homepage": "https://github.com/eheikkenen/ferrite_number#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

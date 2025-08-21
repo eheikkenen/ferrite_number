@@ -2,34 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FNN-1999</title>
-    <script src="./build/fnn1999.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNN-1999 Ferrite Number Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 720px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        #test_output {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
+    <script src="./build/main.js"></script>
 </head>
 <body>
 
-<h1>FNN-1999</h1>
-<p>Based on: Improved Ferrite Number Prediction in Stainless Steel Arc Welds Using Artificial Neural Networks Part 1:
-    Neural Network Development; J.M. Vitek, Y.S. Iskander AND E.M. Oblow; 2000</p>
-<p>Note: This is a work in progress.</p>
+<div class="container">
+    <div class="text-center">
+        <h1>FNN-1999 Ferrite Number Calculator</h1>
+        <p class="lead">Based on the work of Vitek, Iskander, and Oblow (2000)</p>
+    </div>
 
-<div>C<input type="number" id="c" value="0.01"></div>
-<div>Cr<input type="number" id="cr" value="18.5"></div>
-<div>Ni<input type="number" id="ni" value="12.0"></div>
-<div>Mo<input type="number" id="mo" value="2.6"></div>
-<div>N<input type="number" id="n" value="0.1"></div>
-<div>Mn<input type="number" id="mn" value="0.8"></div>
-<div>Fe<input type="number" id="fe" value="65.2"></div>
-<div>Si<input type="number" id="si" value="0.8"></div>
-<div>Cu<input type="number" id="cu" value="0"></div>
-<div>Ti<input type="number" id="ti" value="0"></div>
-<div>Nb<input type="number" id="nb" value="0"></div>
-<div>V<input type="number" id="v" value="0"></div>
-<div>Co<input type="number" id="co" value="0"></div>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="c" class="form-label">C</label>
+            <input type="number" class="form-control" id="c" value="0.01">
+        </div>
+        <div class="col-md-4">
+            <label for="cr" class="form-label">Cr</label>
+            <input type="number" class="form-control" id="cr" value="18.5">
+        </div>
+        <div class="col-md-4">
+            <label for="ni" class="form-label">Ni</label>
+            <input type="number" class="form-control" id="ni" value="12.0">
+        </div>
+        <div class="col-md-4">
+            <label for="mo" class="form-label">Mo</label>
+            <input type="number" class="form-control" id="mo" value="2.6">
+        </div>
+        <div class="col-md-4">
+            <label for="n" class="form-label">N</label>
+            <input type="number" class="form-control" id="n" value="0.1">
+        </div>
+        <div class="col-md-4">
+            <label for="mn" class="form-label">Mn</label>
+            <input type="number" class="form-control" id="mn" value="0.8">
+        </div>
+        <div class="col-md-4">
+            <label for="fe" class="form-label">Fe</label>
+            <input type="number" class="form-control" id="fe" value="65.2">
+        </div>
+        <div class="col-md-4">
+            <label for="si" class="form-label">Si</label>
+            <input type="number" class="form-control" id="si" value="0.8">
+        </div>
+        <div class="col-md-4">
+            <label for="cu" class="form-label">Cu</label>
+            <input type="number" class="form-control" id="cu" value="0">
+        </div>
+        <div class="col-md-4">
+            <label for="ti" class="form-label">Ti</label>
+            <input type="number" class="form-control" id="ti" value="0">
+        </div>
+        <div class="col-md-4">
+            <label for="nb" class="form-label">Nb</label>
+            <input type="number" class="form-control" id="nb" value="0">
+        </div>
+        <div class="col-md-4">
+            <label for="v" class="form-label">V</label>
+            <input type="number" class="form-control" id="v" value="0">
+        </div>
+        <div class="col-md-4">
+            <label for="co" class="form-label">Co</label>
+            <input type="number" class="form-control" id="co" value="0">
+        </div>
+    </div>
 
-<button id="test"
-        onclick="fnn1999()">get FN
-</button>
-<div><span id="test_output"></span></div>
+    <div id="error_messages" class="alert alert-danger mt-4" role="alert" style="display: none;"></div>
+
+    <div class="d-grid gap-2 col-6 mx-auto mt-4">
+        <button class="btn btn-primary btn-lg" id="calculate_button">Calculate FN</button>
+    </div>
+
+    <div class="text-center mt-4">
+        <span id="test_output"></span>
+    </div>
+
+</div>
 
 </body>
 </html>
