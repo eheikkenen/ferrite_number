@@ -60,10 +60,14 @@ var App;
     var UI;
     (function (UI) {
         var Data = App.Data;
+        UI.elementIds = ["c", "cr", "ni", "mo", "n", "mn", "fe", "si", "cu", "ti", "nb", "v", "co"];
         function getInputs() {
-            var elementIds = ["c", "cr", "ni", "mo", "n", "mn", "fe", "si", "cu", "ti", "nb", "v", "co"];
-            var values = elementIds.map(function (id) { return parseFloat(document.getElementById(id).value); });
-            return { values: values, elementIds: elementIds };
+            var values = UI.elementIds.map(function (id) { return parseFloat(document.getElementById(id).value); });
+            var feIndex = UI.elementIds.indexOf("fe");
+            var otherElementsSum = values.reduce(function (acc, value, i) { return i === feIndex ? acc : acc + value; }, 0);
+            values[feIndex] = 100 - otherElementsSum;
+            document.getElementById("fe").value = values[feIndex].toFixed(2);
+            return { values: values, elementIds: UI.elementIds };
         }
         UI.getInputs = getInputs;
         function validateInputs(inputs, elementIds) {
@@ -97,6 +101,11 @@ var App;
             document.getElementById("test_output").innerText = "Ferrite Number: " + ferriteNumber;
         }
         UI.displayOutput = displayOutput;
+        function updateBalanceElement() {
+            var _a = getInputs(), values = _a.values, elementIds = _a.elementIds;
+            validateInputs(values, elementIds);
+        }
+        UI.updateBalanceElement = updateBalanceElement;
     })(UI = App.UI || (App.UI = {}));
 })(App || (App = {}));
 /// <reference path="ui.ts" />
@@ -106,6 +115,22 @@ var App;
     var UI = App.UI;
     var Calculation = App.Calculation;
     document.addEventListener('DOMContentLoaded', function () {
+        var themeSwitcher = document.getElementById('theme-switcher');
+        var htmlElement = document.documentElement;
+        function setTheme(isDark) {
+            htmlElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        var storedTheme = localStorage.getItem('theme');
+        var isDark = storedTheme === 'dark';
+        if (themeSwitcher) {
+            themeSwitcher.checked = isDark;
+            setTheme(isDark);
+            themeSwitcher.addEventListener('click', function (event) {
+                var newIsDark = event.target.checked;
+                setTheme(newIsDark);
+            });
+        }
         var calculateButton = document.getElementById('calculate_button');
         if (calculateButton) {
             calculateButton.addEventListener('click', function () {
@@ -116,6 +141,17 @@ var App;
                 }
             });
         }
+        UI.elementIds.forEach(function (id) {
+            if (id !== 'fe') {
+                var inputElement = document.getElementById(id);
+                if (inputElement) {
+                    inputElement.addEventListener('input', function () {
+                        UI.updateBalanceElement();
+                    });
+                }
+            }
+        });
+        UI.updateBalanceElement();
     });
 })(App || (App = {}));
 //# sourceMappingURL=main.js.map

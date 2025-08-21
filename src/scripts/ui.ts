@@ -3,9 +3,14 @@
 namespace App.UI {
     import Data = App.Data;
 
+    export const elementIds = ["c", "cr", "ni", "mo", "n", "mn", "fe", "si", "cu", "ti", "nb", "v", "co"];
+
     export function getInputs(): { values: number[], elementIds: string[] } {
-        const elementIds = ["c", "cr", "ni", "mo", "n", "mn", "fe", "si", "cu", "ti", "nb", "v", "co"];
         const values = elementIds.map(id => parseFloat((<HTMLInputElement>document.getElementById(id)).value));
+        const feIndex = elementIds.indexOf("fe");
+        const otherElementsSum = values.reduce((acc, value, i) => i === feIndex ? acc : acc + value, 0);
+        values[feIndex] = 100 - otherElementsSum;
+        (<HTMLInputElement>document.getElementById("fe")).value = values[feIndex].toFixed(2);
         return { values, elementIds };
     }
 
@@ -15,6 +20,8 @@ namespace App.UI {
 
         inputs.forEach((value, i) => {
             const elementId = elementIds[i];
+            
+
             const min = Data.minComposition[i];
             const max = Data.maxComposition[i];
             const inputElement = document.getElementById(elementId);
@@ -39,5 +46,10 @@ namespace App.UI {
 
     export function displayOutput(ferriteNumber: number): void {
         document.getElementById("test_output").innerText = "Ferrite Number: " + ferriteNumber;
+    }
+
+    export function updateBalanceElement(): void {
+        const { values, elementIds } = getInputs();
+        validateInputs(values, elementIds);
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +24,27 @@
             font-weight: bold;
             margin-top: 1rem;
         }
+
+        .faded-text {
+            opacity: 0.5;
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+        }
     </style>
     <script src="./build/main.js"></script>
 </head>
 <body>
 
 <div class="container">
+    <div class="form-check form-switch theme-switcher">
+        <input class="form-check-input" type="checkbox" role="switch" id="theme-switcher">
+        <label class="form-check-label" for="theme-switcher">Dark Mode</label>
+    </div>
+
     <div class="text-center">
         <h1>FNN-1999 Ferrite Number Calculator</h1>
         <p class="lead">Based on the work of Vitek, Iskander, and Oblow (2000)</p>
@@ -38,55 +53,94 @@
     <div class="row g-3">
         <div class="col-md-4">
             <label for="c" class="form-label">C</label>
-            <input type="number" class="form-control" id="c" value="0.01">
+            <div class="input-group">
+                <input type="number" class="form-control" id="c" value="0.01">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="cr" class="form-label">Cr</label>
-            <input type="number" class="form-control" id="cr" value="18.5">
+            <div class="input-group">
+                <input type="number" class="form-control" id="cr" value="18.5">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="ni" class="form-label">Ni</label>
-            <input type="number" class="form-control" id="ni" value="12.0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="ni" value="12.0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="mo" class="form-label">Mo</label>
-            <input type="number" class="form-control" id="mo" value="2.6">
+            <div class="input-group">
+                <input type="number" class="form-control" id="mo" value="2.6">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="n" class="form-label">N</label>
-            <input type="number" class="form-control" id="n" value="0.1">
+            <div class="input-group">
+                <input type="number" class="form-control" id="n" value="0.1">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="mn" class="form-label">Mn</label>
-            <input type="number" class="form-control" id="mn" value="0.8">
+            <div class="input-group">
+                <input type="number" class="form-control" id="mn" value="0.8">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
-            <label for="fe" class="form-label">Fe</label>
-            <input type="number" class="form-control" id="fe" value="65.2">
+            <label for="fe" class="form-label">Fe (balance)</label>
+            <div class="input-group">
+                <input type="number" class="form-control bg-secondary-subtle" id="fe" value="65.2" disabled readonly>
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="si" class="form-label">Si</label>
-            <input type="number" class="form-control" id="si" value="0.8">
+            <div class="input-group">
+                <input type="number" class="form-control" id="si" value="0.8">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="cu" class="form-label">Cu</label>
-            <input type="number" class="form-control" id="cu" value="0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="cu" value="0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="ti" class="form-label">Ti</label>
-            <input type="number" class="form-control" id="ti" value="0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="ti" value="0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="nb" class="form-label">Nb</label>
-            <input type="number" class="form-control" id="nb" value="0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="nb" value="0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="v" class="form-label">V</label>
-            <input type="number" class="form-control" id="v" value="0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="v" value="0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
         <div class="col-md-4">
             <label for="co" class="form-label">Co</label>
-            <input type="number" class="form-control" id="co" value="0">
+            <div class="input-group">
+                <input type="number" class="form-control" id="co" value="0">
+                <span class="input-group-text faded-text">wt. %</span>
+            </div>
         </div>
     </div>
 
